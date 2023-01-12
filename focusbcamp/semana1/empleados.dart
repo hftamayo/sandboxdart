@@ -1,17 +1,14 @@
 class Empresa {
-  Empresa(this.nombreEmpleado, this.salarioEmpleado);
   final String nombreEmpleado; //no-nullable
   final double salarioEmpleado; //no-nullable
 
-  factory Empresa.fromJson(Map<String, double> empleados) {
-    final nombre = empleados['nombre'] as String;
-    final salario = empleados['salario'] as double;
-    Empresa(nombre, salario);
-  }
+  Empresa(this.nombreEmpleado, this.salarioEmpleado);
+  Empresa.fromJson(Map<String, dynamic> empleados)
+      : nombreEmpleado = empleados["nombre"],
+        salarioEmpleado = empleados["salario"];
 
   double promedioSalarial() {
-    double promedio = 0;
-
+    double promedio = empleados.map((e) => e['salario']!).average;
     return promedio;
   }
 }
