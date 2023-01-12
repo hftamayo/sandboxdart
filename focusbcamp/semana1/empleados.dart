@@ -1,21 +1,21 @@
-class Empresa {
-  final String nombreEmpleado; //no-nullable
-  final double salarioEmpleado; //no-nullable
+class Company {
+  final String empName; //no-nullable
+  final double empSalary; //no-nullable
 
-  Empresa(this.nombreEmpleado, this.salarioEmpleado);
-  Empresa.fromJson(Map<String, dynamic> empleados)
-      : nombreEmpleado = empleados["nombre"],
-        salarioEmpleado = empleados["salario"];
+  Company(this.empName, this.empSalary);
+  Company.fromJson(Map<String, dynamic> employees)
+      : empName = employees["name"],
+        empSalary = employees["salary"];
 
-  double promedioSalarial() {
-    double promedio = empleados.map((e) => e['salario']!).average;
-    return promedio;
+  double averageSalary() {
+    double averageSal = employees.map((e) => e['salary']!).average;
+    return averageSal;
   }
 }
 
 void main() {
-  final Empresa dunderMifflin =
-      Empresa(empleados: {"Michael": 2, "Jim": 4, "Pam": 6});
-  final double promedioSalarial = dunderMifflin.promedioSalarial();
-  print(promedioSalarial);
+  final Company myCompany =
+      Company(employees: {"Michael": 2, "Jim": 4, "Pam": 6});
+  final double averageSalary = myCompany.averageSalary();
+  print(averageSalary);
 }
