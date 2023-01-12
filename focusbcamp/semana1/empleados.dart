@@ -5,11 +5,9 @@ class Company {
 
   double averageSalary() {
     double avgSal = 0;
-    List<double> salaries = employees.values.toList();
 
-    for (double salary in salaries) {
-      avgSal += salary;
-    }
+    Iterable<double> salaries = employees.values;
+    avgSal = salaries.reduce((sum, value) => sum + value);
     avgSal = avgSal / employees.length;
 
     return avgSal;
